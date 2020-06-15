@@ -14,4 +14,24 @@ class BlogController extends Controller
         $post = $this->data;
         return view('blog', compact('post'));
     }
+
+    function show($slug) {
+        
+        $single_post = $this->checkPost($slug, $this->data);
+
+        if(! $single_post) {
+            abort('404');
+        }
+
+        return view('show', ['post' => $single_post]);
+    }
+
+    private function checkPost($slug, $array) {
+        foreach ($array as $post) {
+            if($post['slug'] == $slug) {
+                return $post;
+            }
+        }
+        return false;
+    }
 }

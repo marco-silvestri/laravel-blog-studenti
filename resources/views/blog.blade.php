@@ -9,7 +9,7 @@
          <article>
             <h3>{{$item['title']}}</h3>
             <p>{{$item['description']}}</p>
-            <a href="">Leggi di più</a>
+            <a href="{{ route('blog.show',['slug' => $item['slug']]) }}">Leggi di più</a>
          </article>
       @endforeach
    </section>
