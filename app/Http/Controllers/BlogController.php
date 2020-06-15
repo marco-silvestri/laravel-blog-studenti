@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    private $data;
+    function __construct() {
+        $this->data = config('blog.data');
+    }
     function index(){
-        return view('blog');
+        $post = $this->data;
+        return view('blog', compact('post'));
     }
 }
